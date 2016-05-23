@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400");
+
+html { height: 100%; }
+body { height: 100%; margin: 0px; background-color: #111; font-size: 0px; color: #eee;}
+body, input { font-family: "Roboto";}
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-weight: normal; color: #eee;}
+p { margin: 0px;}
+ul { padding: 0px;}
+
+#main_header { display: block; height: 32px; border-bottom: 1px solid #000; background-color: #222;}
+	#main_header > h1 { display: inline-block; vertical-align: top; width: 239px; height: 32px; line-height: 32px; font-size: 16px; text-align: center;}
+	#main_header > nav { display: inline-block; vertical-align: top; height: 32px; border-left: 1px solid #111;}
+		#main_header > nav > input { display: inline-block; vertical-align: top; height: 32px; padding: 0px 8px 0px 32px; border: none; border-right: 1px solid #111; background-color: transparent; font-size: 14px; color: #eee; transition: background-color 250ms ease; cursor: pointer;}
+		#main_header > nav > input:hover { background-color: #1a1a1a;}
+		#main_header > nav > .new { background-image: url("../img/new.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
+		#main_header > nav > .save { background-image: url("../img/save.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
+		#main_header > nav > .options { background-image: url("../img/gear.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
+
+#main_div { display: block; min-width: 1080px; height: calc(100% - 33px); min-height: 640px;}
+	#main_aside { display: inline-block; vertical-align: top; box-sizing: border-box; width: 240px; height: 100%; border-right: 1px solid #000; background-color: #222;}
+	#main { display: inline-block; vertical-align: top; box-sizing: border-box; position: relative; width: calc(100% - 240px); height: 100%;}
+		#map_div { display: block; position: absolute; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); width: 800px; height: 600px; margin: auto; background: #1b2c41; box-shadow: 0px 0px 4px #000; overflow: auto;}
+			#game_canvas { display: block; width: 0; height: 0;}
