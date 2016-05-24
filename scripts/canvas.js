@@ -1,5 +1,7 @@
 var Canvas =
 {
+	map_div: document.getElementById("map_div"),
+
 	map_canvas: document.getElementById("map_canvas"),
 	map_ctx: undefined,
 
@@ -36,7 +38,7 @@ var Canvas =
 		this.tilesheet_ctx.strokeStyle = "#ffffff";
 		this.tilesheet_ctx.lineWidth = 1;
 		this.tilesheet_ctx.drawImage(this.tilesheet, 0, 0);
-		this.select_tile({layerX: 0, layerY: 0});
+		this.select_tile({offsetX: 0, offsetY: 0});
 
 		// Map Canvas
 		this.map_canvas.style.width = map_width * 40 + "px";
@@ -69,8 +71,8 @@ var Canvas =
 
 	select_tile: function(e)
 	{
-		this.selected_x = Math.floor(e.layerX / 40);
-		this.selected_y = Math.floor(e.layerY / 40);
+		this.selected_x = Math.floor(e.offsetX / 40);
+		this.selected_y = Math.floor(e.offsetY / 40);
 
 		var start_x = this.selected_x * 40;
 		var start_y = this.selected_y * 40;
@@ -107,8 +109,8 @@ var Canvas =
 
 	mouse_move: function(e)
 	{
-		var x = Math.floor(e.layerX / 40);
-		var y = Math.floor(e.layerY / 40);
+		var x = Math.floor(e.offsetX / 40);
+		var y = Math.floor(e.offsetY / 40);
 		if (this.left_click)
 		{
 			if (this.last_x != x || this.last_y != y)
