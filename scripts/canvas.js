@@ -127,7 +127,6 @@ var Canvas =
 				this.last_y = y;
 			}
 		}
-		
 	},
 
 	draw_tile: function(x, y)

@@ -1,4 +1,4 @@
-/*@import url("https://fonts.googleapis.com/css?family=Roboto:400");*/
+@import url("https://fonts.googleapis.com/css?family=Roboto:400");
 
 html { height: 100%; }
 body { height: 100%; margin: 0px; background-color: #111; font-size: 0px;}
@@ -42,7 +42,7 @@ ul { padding: 0px;}
 					#new_section > form > label > input { display: block; box-sizing: border-box; width: calc(100% - 10px); height: 40px; margin: 5px; padding: 10px; border: 1px solid #111; background-color: #333; color: #eee;}
 */		#import_section { display: none;}
 		#export_section { display: none;}
-			#export_section > a { display: block; box-sizing: border-box; width: calc(100% - 10px); height: 30px; line-height: 30px; margin: 5px; border: 1px solid #1a1a1a; font-size: 14px; background-color: #333; text-align: center; text-decoration: none; color: #eee;}
+			#export_section > a { display: block; box-sizing: border-box; width: calc(100% - 20px); line-height: 20px; margin: 10px; padding: 5px; border: 1px solid #1a1a1a; font-size: 14px; background-color: #333; text-align: center; text-decoration: none; color: #eee;}
 		#options_section { display: none;}
 	#main { display: inline-block; vertical-align: top; box-sizing: border-box; position: relative; width: calc(100% - 240px); height: 100%;}
 		#map_div { display: block; position: absolute; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); width: 800px; height: 600px; margin: auto; background: #1b2c41; box-shadow: 0px 0px 4px #000; overflow: auto;}

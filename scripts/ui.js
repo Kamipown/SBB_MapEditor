@@ -46,7 +46,6 @@ var Ui =
 			Ui.close_section();
 		}
 		tilesheet.src = URL.createObjectURL(v[3].files[0]);
-		//Map_Canvas.new_map(name, w, h);
 	},
 
 	prepare_export: function()
@@ -56,10 +55,9 @@ var Ui =
 		var url = URL.createObjectURL(blob);
 
 		var link = document.getElementById("export_link");
-		link.download = "map.json";
-		link.href = url;
 
-		for (var i = 0; i < Canvas.map.size.y; ++i)
-			console.log(Canvas.map.tiles[i]);
+		link.download = Canvas.map.name + ".json";
+		link.href = url;
+		link.innerHTML = "Telecharger " + Canvas.map.name + ".json";
 	}
 }
