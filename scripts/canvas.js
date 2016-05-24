@@ -15,6 +15,12 @@ var Canvas =
 
 	map: undefined,
 
+	left_click: false,
+	right_click: false,
+
+	last_x: -1,
+	last_y: -1,
+
 	init: function(map_name, map_width, map_height, tilesheet_name, tilesheet)
 	{
 		// Tilesheet Canvas
@@ -59,8 +65,6 @@ var Canvas =
 			for (var j = 0; j < map_width; ++j)
 				this.map.tiles[i][j] = 0;
 		}
-		console.log(this.tilesheet);
-		console.log(this.map);
 	},
 
 	select_tile: function(e)
@@ -77,16 +81,61 @@ var Canvas =
 		this.tilesheet_ctx.rect(start_x + 0.4, start_y + 0.4, 39.4, 39.4);
 		this.tilesheet_ctx.stroke();
 		this.tilesheet_ctx.closePath();
-		console.log(this.selected_x + " " + this.selected_y);
 	},
 
-	draw_tile: function(e)
+	mouse_down: function(e)
 	{
-		var tile_x = Math.floor(e.layerX / 40);
-		var tile_y = Math.floor(e.layerY / 40);
-		var start_x = tile_x * 40;
-		var start_y = tile_y * 40;
+		if (e.buttons == 1)
+		{
+			this.left_click = true;
+			this.mouse_move(e);
+		}
+		else if (e.buttons == 2)
+		{
+			this.right_click = true;
+			this.mouse_move(e);
+		}
+	},
 
+	mouse_up: function(e)
+	{
+		this.left_click = false;
+		this.right_click = false;
+		this.last_x = -1;
+		this.last_y = -1;
+	},
+
+	mouse_move: function(e)
+	{
+		var x = Math.floor(e.layerX / 40);
+		var y = Math.floor(e.layerY / 40);
+		if (this.left_click)
+		{
+			if (this.last_x != x || this.last_y != y)
+			{
+				this.draw_tile(x, y);
+				this.last_x = x;
+				this.last_y = y;
+			}
+		}
+		else if (this.right_click)
+		{
+			if (this.last_x != x || this.last_y != y)
+			{
+				this.remove_tile(x, y);
+				this.last_x = x;
+				this.last_y = y;
+			}
+		}
+		
+	},
+
+	draw_tile: function(x, y)
+	{
+		var start_x = x * 40;
+		var start_y = y * 40;
+
+		this.map_ctx.clearRect(start_x, start_y, 40, 40);
 		this.map_ctx.drawImage(
 			this.tilesheet,
 			this.selected_x * 40,
@@ -98,7 +147,12 @@ var Canvas =
 			40,
 			40
 		);
+		this.map.tiles[y][x] = this.selected_x + this.selected_y * 5;
+	},
 
-		console.log(start_x + " " + start_y);
+	remove_tile: function(x, y)
+	{
+		this.map_ctx.clearRect(x * 40, y * 40, 40, 40);
+		this.map.tiles[y][x] = 0;
 	}
 }

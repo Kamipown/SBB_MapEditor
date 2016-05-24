@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 	</head>
-	<body onload="Engine.init();">
+	<body onload="Engine.init();" onmouseup="Canvas.mouse_up(event);">
 		<header id="main_header">
 			<h1>SBB Map Editor</h1>
 			<nav>
@@ -71,7 +71,7 @@
 			</aside>
 			<main id="main" role="main">
 				<div id="map_div">
-					<canvas onmousedown="Canvas.draw_tile(event);" id="map_canvas" width="0" height="0"></canvas>
+					<canvas onmousedown="Canvas.mouse_down(event);" onmousemove="Canvas.mouse_move(event);" oncontextmenu="return (false);" id="map_canvas" width="0" height="0"></canvas>
 				</div>
 			</main>
 		</div>

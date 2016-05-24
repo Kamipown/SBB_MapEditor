@@ -58,5 +58,8 @@ var Ui =
 		var link = document.getElementById("export_link");
 		link.download = "map.json";
 		link.href = url;
+
+		for (var i = 0; i < Canvas.map.size.y; ++i)
+			console.log(Canvas.map.tiles[i]);
 	}
 }
