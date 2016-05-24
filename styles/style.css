@@ -1,23 +1,49 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400");
 
 html { height: 100%; }
-body { height: 100%; margin: 0px; background-color: #111; font-size: 0px; color: #eee;}
-body, input { font-family: "Roboto";}
-h1, h2, h3, h4, h5, h6 { margin: 0px; font-weight: normal; color: #eee;}
+body { height: 100%; margin: 0px; background-color: #111; font-size: 0px;}
+body, input { font-family: "Roboto"; color: #eee;}
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-weight: normal;}
 p { margin: 0px;}
 ul { padding: 0px;}
+
+.full_width { display: block; width: 100%;}
+.half_width { display: inline-block; vertical-align: top; width: 50%;}
 
 #main_header { display: block; height: 32px; border-bottom: 1px solid #000; background-color: #222;}
 	#main_header > h1 { display: inline-block; vertical-align: top; width: 239px; height: 32px; line-height: 32px; font-size: 16px; text-align: center;}
 	#main_header > nav { display: inline-block; vertical-align: top; height: 32px; border-left: 1px solid #111;}
-		#main_header > nav > input { display: inline-block; vertical-align: top; height: 32px; padding: 0px 8px 0px 32px; border: none; border-right: 1px solid #111; background-color: transparent; font-size: 14px; color: #eee; transition: background-color 250ms ease; cursor: pointer;}
+		#main_header > nav > input { display: inline-block; vertical-align: top; height: 32px; padding: 0px 8px 0px 32px; border: none; border-right: 1px solid #111; background-color: transparent; font-size: 14px; transition: background-color 250ms ease; cursor: pointer;}
 		#main_header > nav > input:hover { background-color: #1a1a1a;}
 		#main_header > nav > .new { background-image: url("../img/new.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
-		#main_header > nav > .save { background-image: url("../img/save.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
+		#main_header > nav > .import { background-image: url("../img/import.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
+		#main_header > nav > .export { background-image: url("../img/export.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
 		#main_header > nav > .options { background-image: url("../img/gear.svg"); background-size: 16px 16px; background-position: 8px 8px; background-repeat: no-repeat;}
 
 #main_div { display: block; min-width: 1080px; height: calc(100% - 33px); min-height: 640px;}
 	#main_aside { display: inline-block; vertical-align: top; box-sizing: border-box; width: 240px; height: 100%; border-right: 1px solid #000; background-color: #222;}
+		#main_aside > section { }
+			#main_aside > section > h2 { position: relative; width: 100%; height: 32px; line-height: 32px; border-bottom: 1px solid #1a1a1a; text-align: center; font-size: 14px;}
+				#main_aside > section > h2 > input { position: absolute; right: 0px; top: 0px; width: 32px; height: 32px; border: none; border-left: 1px solid #1a1a1a; background-color: transparent; color: #c55; transition: background-color 250ms ease; cursor: pointer;}
+				#main_aside > section > h2 > input:hover { background-color: #1a1a1a;}
+		#main_section { display: block; width: 100%;}
+			#main_section .map_title { display: block; padding: 20px; font-size: 14px;}
+			#main_section .part_name { display: block; padding: 5px 20px; font-size: 12px; color: #ccc;}
+			#main_section .hero_mario { display: block; margin: 0px 20px; border: 1px solid #111; cursor: pointer;}
+			#tilesheet_canvas { display: block; position: relative; width: 0; height: 0; margin: auto; border: 1px solid #111; cursor: pointer;}
+		#new_section { display: none;}
+			#new_section > form { padding: 5px;}
+				#new_section > form > div { }
+					#new_section > form > div > label { display: block; height: 20px; line-height: 20px; margin: 5px; font-size: 14px;}
+					#new_section > form > div > input { display: block; box-sizing: border-box; width: calc(100% - 10px); height: 30px; margin: 5px; padding-left: 8px; border: 1px solid #1a1a1a; font-size: 14px; background-color: #333;}
+					#new_section > form > div > input[type=file] { padding-left: 0px; font-size: 10px;}
+					#new_section > form > div > input[type=submit] { margin-top: 20px; cursor: pointer;}
+/*				#new_section > form > input { display: block; box-sizing: border-box; width: calc(100% - 10px); height: 40px; margin: 5px; padding: 10px; border: 1px solid #111; background-color: #333; color: #eee;}
+					#new_section > form > label > input { display: block; box-sizing: border-box; width: calc(100% - 10px); height: 40px; margin: 5px; padding: 10px; border: 1px solid #111; background-color: #333; color: #eee;}
+*/		#import_section { display: none;}
+		#export_section { display: none;}
+			#export_section > a { display: block; box-sizing: border-box; width: calc(100% - 10px); height: 30px; line-height: 30px; margin: 5px; border: 1px solid #1a1a1a; font-size: 14px; background-color: #333; text-align: center; text-decoration: none; color: #eee;}
+		#options_section { display: none;}
 	#main { display: inline-block; vertical-align: top; box-sizing: border-box; position: relative; width: calc(100% - 240px); height: 100%;}
 		#map_div { display: block; position: absolute; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); width: 800px; height: 600px; margin: auto; background: #1b2c41; box-shadow: 0px 0px 4px #000; overflow: auto;}
-			#game_canvas { display: block; width: 0; height: 0;}
+			#map_canvas { display: block; position: relative; width: 0; height: 0;}

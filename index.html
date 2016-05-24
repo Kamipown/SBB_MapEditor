@@ -6,26 +6,78 @@
 		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 	</head>
-	<body>
+	<body onload="Engine.init();">
 		<header id="main_header">
 			<h1>SBB Map Editor</h1>
 			<nav>
-				<input onclick="" class="new" type="button" value="Nouveau">
-				<input onclick="" class="save" type="button" value="Enregistrer">
-				<input onclick="" class="options" type="button" value="Parametres">
+				<input onclick="Ui.open_section(Ui.NEW);" class="new" type="button" value="Nouveau">
+				<input onclick="Ui.open_section(Ui.IMPORT);" class="import" type="button" value="Importer">
+				<input onclick="Ui.open_section(Ui.EXPORT);" class="export" type="button" value="Exporter">
+				<input onclick="Ui.open_section(Ui.OPTIONS);" class="options" type="button" value="Parametres">
 			</nav>
 		</header>
 
 		<div id="main_div">
 			<aside id="main_aside">
-				
+				<section id="main_section">
+					<p class="map_title"></p>
+
+					<p class="part_name">Tiles</p>
+					<canvas id="tilesheet_canvas" onclick="Canvas.select_tile(event)" width="0" height="0"></canvas>
+
+					<p class="part_name">Hero</p>
+					<img class="hero_mario" src="img/badass.png">
+				</section>
+
+				<section id="new_section">
+					<h2>Nouveau<input onclick="Ui.close_section();" type="button" value="x"></h2>
+					<form onsubmit="Ui.new_map(event);">
+						<div class="full_width">
+							<label>Nom de la map :</label>
+							<input type="text">
+						</div>
+						<div class="half_width">
+							<label>Largeur :</label>
+							<input type="number" value="20">
+						</div>
+						<div class="half_width">
+							<label>Hauteur :</label>
+							<input type="number" value="15">
+						</div>
+						<div class="full_width">
+							<label>Tilesheet (.png) :</label>
+							<input type="file" accept="image/x-png">
+						</div>
+						<div>
+							<input type="submit">
+						</div>
+					</form>
+				</section>
+
+				<section id="import_section">
+					<h2>Importer<input onclick="Ui.close_section();" type="button" value="x"></h2>
+
+				</section>
+
+				<section id="export_section">
+					<h2>Exporter<input onclick="Ui.close_section();" type="button" value="x"></h2>
+					<a id="export_link" href="#">Exporter</a>
+				</section>
+
+				<section id="options_section">
+					<h2>Parametres<input onclick="Ui.close_section();" type="button" value="x"></h2>
+
+				</section>
 			</aside>
 			<main id="main" role="main">
 				<div id="map_div">
-					<canvas id="game_canvas"></canvas>
+					<canvas onmousedown="Canvas.draw_tile(event);" id="map_canvas" width="0" height="0"></canvas>
 				</div>
 			</main>
 		</div>
+		<script type="text/javascript" src="scripts/file_saver.js"></script>
+		<script type="text/javascript" src="scripts/canvas.js"></script>
+		<script type="text/javascript" src="scripts/ui.js"></script>
 		<script type="text/javascript" src="scripts/index.js"></script>
 	</body>
 </html>
